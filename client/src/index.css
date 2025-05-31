@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #5e022a;
+    --color-primary-dark: #0c0d0d;
+    --luxury-black: #1a1a1a;
+    --luxury-gold: #B8860B;
+    --luxury-gold-light: #DAA520;
+  }
+
+  body {
+    @apply font-sans antialiased text-gray-900;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, black, var(--luxury-black), black);
+    color: white;
+  }
+
+  /* Add a subtle gold pattern overlay to the entire page */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(45deg, rgba(184,134,11,0.03) 0%, transparent 20%, rgba(184,134,11,0.05) 40%, transparent 60%, rgba(184,134,11,0.03) 80%),
+      radial-gradient(circle at 50% 50%, rgba(184,134,11,0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-2 bg-secondary text-white rounded-md hover:bg-opacity-90 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+}
+
+@layer utilities {
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .bg-primary-dark {
+    background-color: var(--color-primary-dark);
+  }
+
+  .hover\:bg-primary-dark:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--luxury-black);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--luxury-gold), var(--luxury-gold-light));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--luxury-gold);
+  }
+
+  /* Custom selection color */
+  ::selection {
+    background-color: var(--luxury-gold);
+    color: black;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Add a subtle animation to gradient backgrounds */
+  .bg-gradient-animate {
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite;
+  }
+
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+:root {
+  color-scheme: light dark;
+} 
